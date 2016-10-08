@@ -7,6 +7,7 @@ Este es un proyecto realizado con fines educativos en el marco del desarrollo de
 * [jQuery Mobile](https://jquerymobile.com/) - HTML5-based user interface system designed to make responsive web sites and apps that are accessible on all smartphone, tablet and desktop devices.
 * [Ratchet](http://goratchet.com/) - Mobile apps with simple HTML‚ CSS‚ and JS components.
 * [AngularJS](https://angularjs.org/) - AngularJS lets you extend HTML vocabulary for your application. 
+* [nativeDroid2](https://github.com/wildhaber/nativeDroid2)AWESOME TEMPLATE! 
 
 ### REQUERIMIENTO
 
