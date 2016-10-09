@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html ng-app="demo">
+<html>
 	<head>
 		<title>INW - jQuery Example</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -9,15 +9,20 @@
 		<link rel="stylesheet" href="/vendor/waves/waves.min.css" />
 		<link rel="stylesheet" href="/vendor/wow/animate.css" />
 		<link rel="stylesheet" href="/css/nativedroid2.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    	<script src="js/hello.js"></script>
 
+		<!--El núcleo de Angular -->
+  		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/controller.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/services.js"></script>
+		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js"></script>
+		
 		<meta name="mobile-web-app-capable" content="yes">
 	 	<meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 	</head>
-	<body>
+	<body ng-app="myApp">
 		<div data-role="page">
 
 			<nd2-include data-src="/examples/fragments/panel.left.html"></nd2-include>
@@ -27,35 +32,17 @@
 				<h1 class="wow fadeIn" data-wow-delay='0.4s'>INW - CARRITO</h1>
 			</div>
 
-			<div ng-controller="Hello">
-			<p>The ID is {{greeting.id_producto}}</p>
-			<p>The content is {{greeting.id_categoria}}</p>
-			</div>
 			<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
 
-			<ul data-role="listview" data-icon="false">
+			<ul data-role="listview" data-icon="false" ng-controller="listaCtrl">
 				<li data-role="list-divider">
 					Productos
 				</li>
-				<li>
-					<a href="#">
-						<img src="//lorempixel.com/150/150/people/1/" class="ui-thumbnail ui-thumbnail-circular" />
-						<h2>Ethel Chancy</h2>
-						<p>ehtel.chancy@example.com</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="//lorempixel.com/150/150/people/2/" class="ui-thumbnail ui-thumbnail-circular" />
-						<h2>Lorean Gainer</h2>
-						<p>lorean87@mail.com</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<img src="//lorempixel.com/150/150/people/3/" class="ui-thumbnail ui-thumbnail-circular" />
-						<h2>Juliet Gieseke</h2>
-						<p>flowerpower69@rainbow.com</p>
+				<li ng-repeat="d in data" class="ui-li-has-thumb">
+					<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+						<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+						<h2>{{d.nombre}}</h2>
+						<p>{{d.descripcion}}</p>
 					</a>
 				</li>
 			</ul>
