@@ -10,6 +10,51 @@ controllers.listaCtrl = function($scope, $http){
 	    });
 }
 
+controllers.cate1 = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=5&id=1")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
+
+controllers.cate2 = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=5&id=2")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
+
+controllers.cate3 = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=5&id=3")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
+
+controllers.cate4 = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=5&id=4")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
+
+controllers.cate5 = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=5&id=5")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
+
 
 
 app.controller(controllers);

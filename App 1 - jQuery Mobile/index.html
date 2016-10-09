@@ -22,8 +22,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 	</head>
-	<body ng-app="myApp">
-		<div data-role="page">
+	<body ng-app="myApp" class="clr-accent-lime">
+		<div data-role="page"> 
 
 			<nd2-include data-src="/examples/fragments/panel.left.html"></nd2-include>
 
@@ -34,23 +34,96 @@
 
 			<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
 
-			<ul data-role="listview" data-icon="false" ng-controller="listaCtrl">
-				<li data-role="list-divider">
-					Productos
-				</li>
-				<li ng-repeat="d in data" class="ui-li-has-thumb">
-					<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
-						<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
-						<h2>{{d.nombre}}</h2>
-						<p>{{d.descripcion}}</p>
-					</a>
-				</li>
-			</ul>
+			<div data-role="header" data-position="fixed" class="wow fadeIn">
+				<a href="#leftpanel" class="ui-btn ui-btn-left"><i class="zmdi zmdi-menu"></i></a>
+				<h1 class="wow fadeIn" data-wow-delay='0.4s'>INW</h1>
+
+				<ul data-role="nd2tabs" data-swipe="true">
+					<li data-tab="compu">PC</li>
+					<li data-tab="cate2" data-tab-active="true">TV</li>
+					<li data-tab="cate3">Micro</li>
+					<li data-tab="cate4">Camara</li>
+					<li data-tab="cate5">Phone</li>
+				</ul>
+
+			</div>
+
+			<div role="main" class="ui-content wow fadeIn" data-inset="false" data-wow-delay="0.2s">
+
+				<div data-role="nd2tab" data-tab="compu">
+					<ul data-role="listview" data-icon="false" ng-controller="cate1">
+						<li data-role="list-divider">
+							Productos
+						</li>
+						<li ng-repeat="d in data" class="ui-li-has-thumb">
+							<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+								<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+								<h2>{{d.nombre}}</h2>
+								<p>{{d.descripcion}}</p>
+							</a>
+						</li>
+					</ul>	
+				</div>
+				<div data-role="nd2tab" data-tab="cate2">
+					<ul data-role="listview" data-icon="false" ng-controller="cate2">
+						<li data-role="list-divider">
+							Productos
+						</li>
+						<li ng-repeat="d in data" class="ui-li-has-thumb">
+							<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+								<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+								<h2>{{d.nombre}}</h2>
+								<p>{{d.descripcion}}</p>
+							</a>
+						</li>
+					</ul>	
+				</div>
+				<div data-role="nd2tab" data-tab="cate3">
+					<ul data-role="listview" data-icon="false" ng-controller="cate3">
+						<li data-role="list-divider">
+							Productos
+						</li>
+						<li ng-repeat="d in data" class="ui-li-has-thumb">
+							<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+								<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+								<h2>{{d.nombre}}</h2>
+								<p>{{d.descripcion}}</p>
+							</a>
+						</li>
+					</ul>	
+				</div>
+				<div data-role="nd2tab" data-tab="cate4">
+					<ul data-role="listview" data-icon="false" ng-controller="cate4">
+						<li data-role="list-divider">
+							Productos
+						</li>
+						<li ng-repeat="d in data" class="ui-li-has-thumb">
+							<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+								<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+								<h2>{{d.nombre}}</h2>
+								<p>{{d.descripcion}}</p>
+							</a>
+						</li>
+					</ul>	
+				</div>
+				<div data-role="nd2tab" data-tab="cate5">
+					<ul data-role="listview" data-icon="false" ng-controller="cate5">
+						<li data-role="list-divider">
+							Productos
+						</li>
+						<li ng-repeat="d in data" class="ui-li-has-thumb">
+							<a href="#" class="ui-btn waves-effect waves-button waves-effect waves-button">
+								<img ng-src="{{d.img}}" class="ui-thumbnail ui-thumbnail-circular" width="150px" height="150px" />
+								<h2>{{d.nombre}}</h2>
+								<p>{{d.descripcion}}</p>
+							</a>
+						</li>
+					</ul>	
+				</div>
 
 			</div>
 
 		</div>
-
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
