@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>INW</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+		<link rel="stylesheet" href="/vendor/waves/waves.min.css" />
+		<link rel="stylesheet" href="/css/nativedroid2.css" />
+		
+				<style>
+					/* Prevent FOUC */
+					body { opacity: 0; }
+				</style>
+
+	</head>
+	<body>
+
+		<div data-role="page">
+
+			<nd2-include data-src="/examples/fragments/panel.left.html"></nd2-include>
+
+
+			<div data-role="header" data-position="fixed">
+				<a href="#leftpanel" class="ui-btn ui-btn-left"><i class="zmdi zmdi-menu"></i></a>
+				<h1>INW</h1>
+			</div>
+
+			<div role="main" class="ui-content" data-inset="false">
+
+
+				<!-- Simple Card with Title !-->
+
+				<div class="nd2-card" id="tbody_productos">
+
+					<div class="card-title has-avatar">
+						<img class="card-avatar" src="http://www.mypizarron.com/iconos/inicio/yo.jpg">
+						<h3 class="card-primary-title">Mauricio Flores</h3>
+						<h5 class="card-subtitle">Vendedor</h5>
+					</div>
+
+				</div>
+
+			</div>
+
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+			<script src="/vendor/waves/waves.min.js"></script>
+			<script src="/js/nativedroid2.js"></script>
+			<script src="/nd2settings.js"></script>
+			<script>
+				/**
+				 * @param String name
+				 * @return String
+				 */
+				function getParameterByName(name) {
+					name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+					var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+					results = regex.exec(location.search);
+					return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+				}
+
+						
+				function getJson(id){
+					$.getJSON("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=2&id=" +id, function(result){
+						$.each(result, function(i, field){
+							console.log(result);
+
+							var divMedia = document.createElement("div");
+							divMedia.setAttribute('class',"card-media");
+							
+							var img = document.createElement("img");
+							img.setAttribute('src',field['img']);
+
+							divMedia.appendChild(img);
+							
+							var divCard = document.createElement("div");
+							divCard.setAttribute('class',"card-supporting-text has-action");
+
+							var strong = document.createElement("strong");
+							strong.setAttribute('class',"card-supporting-text has-action");
+							strong.textContent = field['nombre'];
+
+							divCard.textContent = field['descripcion'];
+							
+							//ULTIMA SECCION ACCIONES
+							var divCarA = document.createElement("div");
+							divCarA.setAttribute('class',"card-action");
+
+							var divRow = document.createElement("div");
+							divRow.setAttribute('class',"row between-xs");
+
+							var divXS = document.createElement("div");
+							divXS.setAttribute('class',"col-xs-4");
+
+							var box = document.createElement("div");
+							box.setAttribute('class',"box");
+
+							var but1 = document.createElement("a");
+							but1.setAttribute('href',"#");
+							but1.setAttribute('class',"ui-btn ui-btn-inline ui-btn-fab waves-effect waves-button waves-effect waves-button");
+
+							var i1 = document.createElement("i");
+							i1.setAttribute('class',"zmdi zmdi-favorite");
+
+							var but2 = document.createElement("a");
+							but2.setAttribute('href',"#");
+							but2.setAttribute('class',"ui-btn ui-btn-inline ui-btn-fab waves-effect waves-button waves-effect waves-button");
+
+							var i2 = document.createElement("i");
+							i2.setAttribute('class',"zmdi zmdi-bookmark");
+
+							but2.appendChild(i2);
+							but1.appendChild(i1);
+							
+							box.appendChild(but1);
+							box.appendChild(but2);
+
+							divXS.appendChild(box);
+
+							var divXS8 = document.createElement("div");
+							divXS8.setAttribute('class',"col-xs-8 align-right");
+
+							var box2 = document.createElement("div");
+							box2.setAttribute('class',"box");
+							box2.setAttribute('onclick',"save()");
+
+							var a3 = document.createElement("a");
+							a3.setAttribute('href',"#");
+							a3.setAttribute('class',"ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button");
+							a3.textContent = "Add";
+
+							box2.appendChild(a3);
+							divXS8.appendChild(box2);
+
+							divRow.appendChild(divXS);
+							divRow.appendChild(divXS8);
+
+							divCarA.appendChild(divRow);							
+							
+							document.getElementById("tbody_productos").appendChild(divMedia); 
+							document.getElementById("tbody_productos").appendChild(strong);
+							document.getElementById("tbody_productos").appendChild(divCard);
+							document.getElementById("tbody_productos").appendChild(divCarA);
+
+						});
+					});
+				};
+			
+
+				var prodId = getParameterByName('id');
+				getJson(prodId);
+
+			</script>
+		</div>
+	</body>
+</html>
