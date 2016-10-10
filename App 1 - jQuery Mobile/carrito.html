@@ -29,17 +29,18 @@
 			</div>
 
 
-			<div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s" data-inset="false" id="tbody_productos">
+			<div role="main" class="ui-content wow fadeIn" data-wow-delay="0.2s" data-inset="false" >
 
            <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
               <thead>
                 <tr>
-                  <th data-priority="2">IMG</th>
-                  <th>Movie Title</th>
-                  <th data-priority="3">Year</th>
-                  <th data-priority="1"><abbr title="Rotten Tomato Rating">Rating</abbr></th>
-                  <th data-priority="5">Reviews</th>
+                  <th data-priority="1">IMG</th>
+                  <th>P. Unidad</th>
+                  <th data-priority="1">Total:</th>
+                  <th data-priority="1">Acción</abbr></th>
                 </tr>
+                <tbody id="tbody_productos">
+              </tbody>
               </thead>
             </table>
 
@@ -56,9 +57,7 @@
                             jsonData = JSON.parse(localStorage.jsonData);
 
                             var suma = 0;
-
                             var cant = 0;
-
                             var cont = 1;
 
                             for (index = 0, len = jsonData.length; index < len; ++index) {
@@ -171,7 +170,6 @@
                                 td9.appendChild(btn2);
 
                                 tr.appendChild(td1);
-                                tr.appendChild(td5);
                                 tr.appendChild(td6);
                                 tr.appendChild(td7);
                                 tr.appendChild(td9);
@@ -199,7 +197,6 @@
                             strong.textContent = '$'+Math.round(suma * 100) / 100;
                             h5_2.appendChild(strong);
                             td.appendChild(h5_2);
-                            tr.appendChild(td_white);
                             tr.appendChild(td_white1);
                             tr.appendChild(td_white2);
                             tr.appendChild(td_white3);
@@ -225,7 +222,6 @@
                             strong.textContent = '$'+Math.round(cant*1.99 * 100) / 100;
                             h5_2.appendChild(strong);
                             td.appendChild(h5_2);
-                            tr.appendChild(td_white);
                             tr.appendChild(td_white1);
                             tr.appendChild(td_white2);
                             tr.appendChild(td_white3);
@@ -250,7 +246,6 @@
                             strong.textContent = '$'+Math.round((cant + suma) * 100) / 100;
                             h5_2.appendChild(strong);
                             td.appendChild(h5_2);
-                            tr.appendChild(td_white);
                             tr.appendChild(td_white1);
                             tr.appendChild(td_white2);
                             tr.appendChild(td_white3);
@@ -297,8 +292,6 @@
                             btn2.appendChild(span);
 
                             td_2.appendChild(btn2);
-
-                            tr.appendChild(td_white);
                             tr.appendChild(td_white1);
                             tr.appendChild(td_white2);
                             tr.appendChild(td_white3);
@@ -414,7 +407,8 @@
                         function finalizar () {
 
                             localStorage.removeItem("jsonData");
-                            window.locationf="carrito.html";
+                            alert('Proceso Finalizado');
+                            window.location="index.html";
                         }
 
             </script>
