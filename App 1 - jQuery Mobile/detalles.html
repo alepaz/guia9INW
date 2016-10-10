@@ -62,25 +62,25 @@
 					return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 				}
 
-				var id = "";
+				var id_producto = "";
 				var id_categoria = "";
 				var nombre = "";
 				var descripcion = "";
 				descripcion = descripcion.replace("'", "\"");
 				var precio = "";
-				var img = "";
+				var imgagen = "";
 
 						
 				function getJson(id){
 					$.getJSON("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=2&id=" +id, function(result){
 						$.each(result, function(i, field){
-							id = field['id_producto'];
+							id_producto = field['id_producto'];
 							id_categoria = field['id_categoria'];
 							nombre = field['nombre'];
 							descripcion = field['descripcion'];
 							descripcion = descripcion.replace("'", "\"");
 							precio = field['precio'];
-							img = field['img'];
+							imgagen = field['img'];
 
 							var divMedia = document.createElement("div");
 							divMedia.setAttribute('class',"card-media");
@@ -198,7 +198,7 @@
 					for(i=0; i<jsonData.length; i++){
 
 						//Si existe e prouducto
-						if(jsonData[i]['id_producto'] == id){
+						if(jsonData[i]['id_producto'] == id_producto){
 
 							//Bandera de no existe a false
 							var bandera = false;
@@ -212,13 +212,13 @@
 								//Lo buscamos en el arreglo y le agregamos 1
 								for(i=0; i<jsonData.length; i++){
 
-									if(jsonData[i]['id_producto'] == id){
+									if(jsonData[i]['id_producto'] == id_producto){
 										
 										jsonData[i]['Cantidad'] = parseInt(jsonData[i]['Cantidad']) + parseInt(document.getElementById("quantity").value);
 										localStorage.setItem("jsonData", JSON.stringify(jsonData));
 
 										alert("Agreado a carrito");
-										header("location: productos.php");
+										header("location: carrito.html");
 									}//End if encontrar roducto
 								}//End for bucar producto
 
@@ -234,13 +234,13 @@
 						//El producto no existe
 
 						jsonData.push({
-						"id_producto": id,
+						"id_producto": id_producto,
 						"id_categoria": id_categoria,
 						"nombre": nombre,
 						"descripcion": descripcion,
 						"precio": precio,
 						"Cantidad": valor,
-						"img": img,
+						"img": imgagen,
 						});
 
 						// ahora intentamos guardar jsonData en localstorage
@@ -256,13 +256,13 @@
 
 					// poblamos el objeto (si, es otro personajede RPG, muy original)
 					jsonData.push({
-						"id_producto": id,
+						"id_producto": id_producto,
 						"id_categoria": id_categoria,
 						"nombre": nombre,
 						"descripcion": descripcion,
 						"precio": precio,
 						"Cantidad": valor,
-						"img": img,
+						"img": imgagen,
 					});
 
 					// ahora intentamos guardar jsonData en localstorage
