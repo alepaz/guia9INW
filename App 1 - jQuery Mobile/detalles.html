@@ -62,11 +62,25 @@
 					return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 				}
 
+				var id = "";
+				var id_categoria = "";
+				var nombre = "";
+				var descripcion = "";
+				descripcion = descripcion.replace("'", "\"");
+				var precio = "";
+				var img = "";
+
 						
 				function getJson(id){
 					$.getJSON("http://pymesv.com/cliente04sw/servicio/ws/producto.php?opc=2&id=" +id, function(result){
 						$.each(result, function(i, field){
-							console.log(result);
+							id = field['id_producto'];
+							id_categoria = field['id_categoria'];
+							nombre = field['nombre'];
+							descripcion = field['descripcion'];
+							descripcion = descripcion.replace("'", "\"");
+							precio = field['precio'];
+							img = field['img'];
 
 							var divMedia = document.createElement("div");
 							divMedia.setAttribute('class',"card-media");
@@ -125,13 +139,23 @@
 
 							var box2 = document.createElement("div");
 							box2.setAttribute('class',"box");
-							box2.setAttribute('onclick',"save()");
+							box2.setAttribute('onclick',"add_carrito()");
 
 							var a3 = document.createElement("a");
 							a3.setAttribute('href',"#");
 							a3.setAttribute('class',"ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button");
 							a3.textContent = "Add";
+							
+							var input = document.createElement("input");
+							input.setAttribute('type',"number");
+							input.setAttribute('id',"quantity");
+							input.setAttribute('name',"quantity");
+							input.setAttribute('name',"quantity");
+							input.setAttribute('min',"0");
+							input.setAttribute('step',"1");
+							input.setAttribute('value',"1");
 
+							box2.appendChild(input);
 							box2.appendChild(a3);
 							divXS8.appendChild(box2);
 
@@ -152,6 +176,110 @@
 
 				var prodId = getParameterByName('id');
 				getJson(prodId);
+
+				function add_carrito() {
+
+        		var valor = document.getElementById("quantity").value;
+				//Tenemos acceso a las variables creadas en la parte de php en la seccion de script
+
+				//para agregar a json
+				var jsonData = [];
+
+				var bandera = true;
+
+				//traer json si existe
+				if(localStorage.jsonData){
+
+					//alert("existe");
+					//Si existe localstorage recuperamos el json
+					jsonData = JSON.parse(localStorage.jsonData);
+
+					//recorremos el json en busca del producto a ver si se repite
+					for(i=0; i<jsonData.length; i++){
+
+						//Si existe e prouducto
+						if(jsonData[i]['id_producto'] == id){
+
+							//Bandera de no existe a false
+							var bandera = false;
+
+							//alert para comprobar si el usuario desea agregar uno mas
+							var agree=confirm("El producto ya existe en su carrito! ¿desea adicionar la cantidad a su carrito?.");
+							
+							//Si le da agree en el alert
+							if (agree){
+
+								//Lo buscamos en el arreglo y le agregamos 1
+								for(i=0; i<jsonData.length; i++){
+
+									if(jsonData[i]['id_producto'] == id){
+										
+										jsonData[i]['Cantidad'] = parseInt(jsonData[i]['Cantidad']) + parseInt(document.getElementById("quantity").value);
+										localStorage.setItem("jsonData", JSON.stringify(jsonData));
+
+										alert("Agreado a carrito");
+										header("location: productos.php");
+									}//End if encontrar roducto
+								}//End for bucar producto
+
+							}else{ //Else agree
+							
+								return false;
+							}//end else
+						}//End if buscar producto
+					} //End for
+
+					if(bandera){ // Bandera si el producto no fue encontrado agregarlo
+
+						//El producto no existe
+
+						jsonData.push({
+						"id_producto": id,
+						"id_categoria": id_categoria,
+						"nombre": nombre,
+						"descripcion": descripcion,
+						"precio": precio,
+						"Cantidad": valor,
+						"img": img,
+						});
+
+						// ahora intentamos guardar jsonData en localstorage
+						localStorage.setItem("jsonData", JSON.stringify(jsonData));
+
+						alert("Agreado a carrito");
+
+					}
+
+				}else{ //o existe localstorage
+
+				// inicializamos el objeto
+
+					// poblamos el objeto (si, es otro personajede RPG, muy original)
+					jsonData.push({
+						"id_producto": id,
+						"id_categoria": id_categoria,
+						"nombre": nombre,
+						"descripcion": descripcion,
+						"precio": precio,
+						"Cantidad": valor,
+						"img": img,
+					});
+
+					// ahora intentamos guardar jsonData en localstorage
+					localStorage.setItem("jsonData", JSON.stringify(jsonData));
+
+					// requerimos la data guardada
+					//alert(localStorage.getItem("jsonData"));
+
+					alert("Agreado a carrito");
+
+				}
+
+
+
+				//console.log(localStorage.getItem('jsonData'))
+
+			}
 
 			</script>
 		</div>
