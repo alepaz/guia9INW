@@ -1,0 +1,41 @@
+.zmdi {
+    display: inline-block;
+    font-family: Ratchicons;
+    font-size: 24px;
+    line-height: 1;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content > .table-view:first-child {
+    margin-top: 0px !important;
+}
+
+span.tab-text {
+    display: block;
+    font-size: 11px;
+}
+
+img.media-object.pull-left {
+    width: 65px !important;
+}
+
+#producto > .content {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#producto > .bar-nav ~ .content {
+    padding-top: 60px;
+}
+
+img.img-producto {
+    width: 60%;
+}
+
+#cuenta > .bar-nav ~ .content {
+    padding-top: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+}

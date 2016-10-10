@@ -1,0 +1,16 @@
+{
+  "name": "App 2 - Go Ratchet",
+  "authors": [
+    "Alejandro Paz <alepazte@hotmail.com>"
+  ],
+  "description": "Guia 9 Ingenieria de la Web",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "ratchet": "^2.0.2",
+    "angular": "^1.5.8",
+    "ngstorage": "^0.3.11"
+  }
+}

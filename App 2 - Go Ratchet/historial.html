@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>App 2 - Go Ratchet</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- CSS -->
+    <link href="css/custom-style.css" rel="stylesheet">
+    <link href="css/material-design-iconic-font.css" rel="stylesheet">
+    <link href="lib/ratchet/dist/css/ratchet.css" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="lib/ratchet/dist/js/ratchet.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="myApp">
+
+    <header class="bar bar-nav">
+      <h1 class="title">Historial</h1>
+    </header>
+
+    <div class="content">
+        
+    </div>
+
+    <nav class="bar bar-tab">
+        <a class="tab-item" href="index.html">
+            <i class="zmdi zmdi-search zmdi-hc-lg"></i>
+            <span class="tab-text">Buscar</span>
+        </a>
+        <a class="tab-item active" href="historial.html">
+            <i class="zmdi zmdi-calendar-note zmdi-hc-lg"></i>
+            <span class="tab-text">Historial</span>
+        </a>
+        <a class="tab-item" href="carrito.html">
+            <i class="zmdi zmdi-shopping-cart zmdi-hc-lg"></i>
+            <span class="tab-text">Carrito</span>
+        </a>
+        <a class="tab-item" href="cuenta.html">
+            <i class="zmdi zmdi-account-circle zmdi-hc-lg"></i>
+            <span class="tab-text">Cuenta</span>
+        </a>
+    </nav>
+
+  </body>
+</html>
