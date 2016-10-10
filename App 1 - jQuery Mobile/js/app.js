@@ -64,5 +64,13 @@ controllers.producto = function($scope, $http){
 	    });
 }
 
+controllers.pais = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/pais.php")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
 
 app.controller(controllers);
