@@ -15,6 +15,7 @@
     <link href="css/custom-style.css" rel="stylesheet">
     <link href="css/material-design-iconic-font.css" rel="stylesheet">
     <link href="lib/ratchet/dist/css/ratchet.css" rel="stylesheet">
+    <link href="lib/animate.css/animate.css" rel="stylesheet">
 
     <!-- JS -->
     <script src="lib/ratchet/dist/js/ratchet.js"></script>
@@ -28,24 +29,36 @@
       <h1 class="title">Carrito</h1>
     </header>
 
-    <div class="content">
-        
+    <div class="content" ng-controller="carritoCtrl">
+        <ul class="table-view">
+            <li class="table-view-cell animated fadeIn" ng-repeat="c in carrito">
+                <span class="badge">
+                    {{::c.cantidad}} &nbsp;
+                    <i class="zmdi zmdi-close zmdi-hc-lg clickable" ng-click="remove(c)"></i>
+                </span>
+                {{::c.item.nombre}}
+                <p ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">Subtotal ${{(c.item.precio * c.cantidad)}}</p>
+            </li>
+        </ul>
+
+        <button class="btn btn-primary btn-block animated fadeIn" ng-if="isShowed()" ng-click="limpiarCarrito()">Pagar ${{total}}</button>
+        <div ng-if="!isShowed()">El carrito esta vacío</div>
     </div>
 
-    <nav class="bar bar-tab">
-        <a class="tab-item" href="index.html">
+    <nav ng-controller="navCtrl" class="bar bar-tab animated bounceInUp">
+        <a class="tab-item" ng-click="goTo('index')">
             <i class="zmdi zmdi-search zmdi-hc-lg"></i>
             <span class="tab-text">Buscar</span>
         </a>
-        <a class="tab-item" href="historial.html">
+        <a class="tab-item" ng-click="goTo('historial')">
             <i class="zmdi zmdi-calendar-note zmdi-hc-lg"></i>
             <span class="tab-text">Historial</span>
         </a>
-        <a class="tab-item active" href="carrito.html">
+        <a class="tab-item active" >
             <i class="zmdi zmdi-shopping-cart zmdi-hc-lg"></i>
             <span class="tab-text">Carrito</span>
         </a>
-        <a class="tab-item" href="cuenta.html">
+        <a class="tab-item" ng-click="goTo('cuenta')">
             <i class="zmdi zmdi-account-circle zmdi-hc-lg"></i>
             <span class="tab-text">Cuenta</span>
         </a>

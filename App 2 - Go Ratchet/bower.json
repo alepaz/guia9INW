@@ -11,6 +11,7 @@
   "dependencies": {
     "ratchet": "^2.0.2",
     "angular": "^1.5.8",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "animate.css": "^3.5.2"
   }
 }

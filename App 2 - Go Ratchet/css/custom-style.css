@@ -39,3 +39,19 @@ img.img-producto {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+#addForm {
+    margin-top: 25px;
+}
+
+#txtCantidad {
+    width: 30%;
+}
+
+#btnAdd {
+    height: 35px;
+}
+
+.clickable:hover {
+    cursor:pointer;
+}
