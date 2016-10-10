@@ -55,6 +55,14 @@ controllers.cate5 = function($scope, $http){
 	    });
 }
 
+controllers.producto = function($scope, $http){
+    $scope.data = [];
+    $http.get("http://pymesv.com/cliente04sw/servicio/ws/historial_compra.php?id=2")
+	    .success(function(response) {
+            $scope.data = response;
+	        console.log(response)
+	    });
+}
 
 
 app.controller(controllers);
